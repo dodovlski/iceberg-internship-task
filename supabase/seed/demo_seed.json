@@ -1,0 +1,24 @@
+{
+  "demo_properties": [],
+  "demo_customer_profiles": [],
+  "demo_messages": [],
+  "demo_rules": [
+    {
+      "id": "material_information",
+      "payload": {
+        "name": "Material information checks",
+        "fields": [
+          "EPC",
+          "Council Tax",
+          "Parking",
+          "Service Charge",
+          "Ground Rent",
+          "Availability",
+          "Tenure",
+          "Lease Length"
+        ],
+        "mode": "read_only_seed"
+      }
+    }
+  ]
+}

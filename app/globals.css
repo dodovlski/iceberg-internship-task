@@ -1,0 +1,221 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Iceberg Digital ,  DESIGN_LANGUAGE.md */
+    --background: 240 20% 95%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    --primary: 328 100% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 271 39% 53%;
+    --secondary-foreground: 0 0% 100%;
+    --tertiary: 240 20% 95%;
+    --quaternary: 240 20% 94%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 13%;
+    --accent: 328 100% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 8% 91%;
+    --input: 0 0% 100%;
+    --ring: 328 100% 45%;
+    --ink: 0 0% 0%;
+    --radius: 1rem;
+    --radius-sm: 0.5rem;
+    --radius-lg: 1.5rem;
+    --shadow-pop: 4px 4px 0 0 #000000;
+    --shadow-pop-hover: 6px 6px 0 0 #000000;
+    --shadow-pop-active: 2px 2px 0 0 #000000;
+    --shadow-card: 8px 8px 0 0 #e0e0e8;
+    --shadow-card-featured: 8px 8px 0 0 #e6007e;
+    --motion-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Outfit", system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: hsl(328 100% 45% / 0.2);
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-body text-xs font-bold uppercase tracking-widest text-muted-foreground;
+  }
+
+  .editorial-title {
+    @apply font-heading text-3xl font-bold leading-tight text-foreground md:text-4xl;
+  }
+
+  .mono-detail {
+    @apply font-body text-xs font-semibold text-muted-foreground;
+  }
+
+  .card-title-glow {
+    @apply font-heading text-xl font-bold text-foreground md:text-2xl;
+  }
+
+  .nav-link {
+    @apply font-body text-sm font-medium text-muted-foreground transition-colors duration-300 hover:text-foreground;
+  }
+
+  .nav-link-active {
+    @apply font-bold text-foreground;
+  }
+
+  .surface-card {
+    @apply rounded-xl border-2 border-ink bg-card shadow-card;
+  }
+
+  .surface-card-playful {
+    @apply surface-card transition-all duration-300 motion-safe:hover:-rotate-1 motion-safe:hover:scale-[1.02];
+    transition-timing-function: var(--motion-bounce);
+  }
+
+  .surface-card-product {
+    @apply surface-card shadow-[4px_4px_0_0_#E0E0E8] motion-safe:transition-shadow motion-safe:duration-200 motion-safe:hover:shadow-[5px_5px_0_0_#E0E0E8];
+  }
+
+  .surface-muted {
+    @apply rounded-lg border-2 border-border bg-muted/60;
+  }
+
+  .accent-bar {
+    @apply border-l-[3px] border-primary pl-3 font-medium;
+  }
+
+  .notebook-window {
+    @apply surface-card-product overflow-hidden text-card-foreground;
+  }
+
+  .notebook-title-bar {
+    @apply flex items-center justify-between border-b-2 border-border bg-muted/50 px-4 py-3;
+  }
+
+  .inset-panel {
+    @apply rounded-lg border-2 border-border bg-muted/30;
+  }
+
+  .btn-candy {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-ink bg-primary px-6 font-heading text-sm font-bold text-primary-foreground shadow-pop;
+    @apply transition-all duration-300 motion-safe:hover:-translate-x-0.5 motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-pop-hover;
+    @apply motion-safe:active:translate-x-0.5 motion-safe:active:translate-y-0.5 motion-safe:active:shadow-pop-active;
+    transition-timing-function: var(--motion-bounce);
+  }
+
+  .btn-outline-playful {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-ink bg-transparent px-6 font-heading text-sm font-bold text-foreground;
+    @apply transition-all duration-300 motion-safe:hover:bg-tertiary;
+    transition-timing-function: var(--motion-bounce);
+  }
+
+  .input-playful {
+    @apply w-full rounded-lg border-2 border-slate-300 bg-input px-4 py-3 text-foreground shadow-[4px_4px_0_0_transparent];
+    @apply transition-all duration-200 focus:border-primary focus:shadow-[4px_4px_0_0_#E6007E] focus:outline-none;
+  }
+
+  .bg-dot-grid {
+    background-image: radial-gradient(circle, #d4d4dc 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .hero-blob {
+    @apply pointer-events-none absolute -left-16 -top-16 -z-10 h-64 w-64 rounded-full bg-primary/15 motion-safe:animate-pulse-soft;
+  }
+
+  .icon-wiggle {
+    @apply motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:animate-wiggle;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: "Outfit", system-ui, sans-serif;
+  }
+
+  .font-body {
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  }
+
+  .border-ink {
+    border-color: #000000;
+  }
+
+  .text-ink {
+    color: #000000;
+  }
+
+  .shadow-pop {
+    box-shadow: var(--shadow-pop);
+  }
+
+  .shadow-pop-hover {
+    box-shadow: var(--shadow-pop-hover);
+  }
+
+  .shadow-pop-active {
+    box-shadow: var(--shadow-pop-active);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-card-featured {
+    box-shadow: var(--shadow-card-featured);
+  }
+
+  .iceberg-surface [class*="rotate-"]:not(.allow-tilt),
+  .iceberg-surface [class*="-rotate-"]:not(.allow-tilt) {
+    --tw-rotate: 0deg !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .motion-safe\:hover\:-rotate-1:hover,
+    .motion-safe\:hover\:scale-\[1\.02\]:hover,
+    .motion-safe\:hover\:-translate-x-0\.5:hover,
+    .motion-safe\:hover\:-translate-y-0\.5:hover,
+    .motion-safe\:active\:translate-x-0\.5:active,
+    .motion-safe\:active\:translate-y-0\.5:active {
+      transform: none !important;
+    }
+  }
+}
